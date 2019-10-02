@@ -17,14 +17,14 @@ struct ContentView: View {
                 ForEach(users, id: \.self) { user in
                     Text(user)
                 }
-                .onMove(perform: move)
+                .onDelete(perform: delete)
             }
             .navigationBarItems(trailing: EditButton())
         }
     }
 
-    func move(from source: IndexSet, to destination: Int) {
-        users.move(fromOffsets: source, toOffset: destination)
+    func delete(at offsets: IndexSet) {
+        users.remove(atOffsets: offsets)
     }
 }
 
