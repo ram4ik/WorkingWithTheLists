@@ -9,15 +9,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        let first = Restaurant(name: "Joe's Original")
-        let second = Restaurant(name: "The Real Joe's Original")
-        let third = Restaurant(name: "Original Joe's")
-        let restaurants = [first, second, third]
+    @State private var users = ["Paul", "Taylor", "Adele"]
 
-        return List(restaurants) { restaurant in
-            RestaurantRow(restaurant: restaurant)
+    var body: some View {
+        NavigationView {
+            List {
+                ForEach(users, id: \.self) { user in
+                    Text(user)
+                }
+                .onDelete(perform: delete)
+            }
         }
+    }
+
+    func delete(at offsets: IndexSet) {
+        users.remove(atOffsets: offsets)
     }
 }
 
