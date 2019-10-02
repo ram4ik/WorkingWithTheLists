@@ -11,18 +11,12 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         List {
-            Section(header: Text("Important tasks")) {
-                TaskRow()
-                TaskRow()
-                TaskRow()
+            Section(header: Text("Examples")) {
+                ExampleRow()
+                ExampleRow()
+                ExampleRow()
             }
-
-            Section(header: Text("Other tasks"), footer: Text("End")) {
-                TaskRow()
-                TaskRow()
-                TaskRow()
-            }
-        }
+        }.listStyle(GroupedListStyle())
     }
 }
 
@@ -48,5 +42,11 @@ struct Restaurant: Identifiable {
 struct TaskRow: View {
     var body: some View {
         Text("Task data goes here")
+    }
+}
+
+struct ExampleRow: View {
+    var body: some View {
+        Text("Example Row")
     }
 }
