@@ -9,22 +9,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var users = ["Paul", "Taylor", "Adele"]
-
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(users, id: \.self) { user in
-                    Text(user)
-                }
-                .onDelete(perform: delete)
+        List {
+            Section(header: Text("Important tasks")) {
+                TaskRow()
+                TaskRow()
+                TaskRow()
             }
-            .navigationBarItems(trailing: EditButton())
-        }
-    }
 
-    func delete(at offsets: IndexSet) {
-        users.remove(atOffsets: offsets)
+            Section(header: Text("Other tasks"), footer: Text("End")) {
+                TaskRow()
+                TaskRow()
+                TaskRow()
+            }
+        }
     }
 }
 
@@ -45,4 +43,10 @@ struct RestaurantRow: View {
 struct Restaurant: Identifiable {
     var id = UUID()
     var name: String
+}
+
+struct TaskRow: View {
+    var body: some View {
+        Text("Task data goes here")
+    }
 }
