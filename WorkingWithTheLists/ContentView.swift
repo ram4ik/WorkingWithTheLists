@@ -8,15 +8,21 @@
 
 import SwiftUI
 
+struct User: Identifiable {
+    var id = UUID()
+    var username = "Anonymous"
+}
+
 struct ContentView: View {
+    let users = [User(), User(), User()]
+
     var body: some View {
-        List {
-            Section(header: Text("Examples")) {
-                ExampleRow()
-                ExampleRow()
-                ExampleRow()
-            }
-        }.listStyle(GroupedListStyle())
+        List(users) { user in
+            Image("paul-hudson")
+                .resizable()
+                .frame(width: 40, height: 40)
+            Text(user.username)
+        }
     }
 }
 
